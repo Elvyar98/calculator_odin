@@ -3,6 +3,7 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    max-inline-size: 22rem;
 }
 .calculator_output {
 
