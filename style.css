@@ -1,9 +1,8 @@
 .calculator {
-    height: 10 rem;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     max-inline-size: 22rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
 }
 .calculator_output {
 
