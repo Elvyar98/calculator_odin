@@ -121,3 +121,32 @@ buttons.forEach((button) => {
     });
     
 })
+
+document.addEventListener("keydown", (e) => {
+    let selector;
+
+    if (e.key >= "0" && e.key <= "9") {
+        selector = `.calculator__key[data-key="${e.key}"]`;
+    } else if (e.key === "+") {
+        selector = `.calculator__key--operator[data-key="+"]`;
+    } else if (e.key === "-") {
+        selector = `.calculator__key--operator[data-key="-"]`;
+    } else if (e.key === "*") {
+        selector = `.calculator__key--operator[data-key="*"]`;
+    } else if (e.key === "/") {
+        selector = `.calculator__key--operator[data-key="/"]`;
+    } else if (e.key === "Enter" || e.key === "=") {
+        selector = `.calculator__key--enter`;
+    } else if (e.key === "Backspace") {
+        selector = `.calculator__key--backspace`;
+    } else if (e.key === "Escape") {
+        selector = `.calculator__key--clear`;
+    } else if (e.key === ".") {
+        selector = `.calculator__key--decimal`;
+    }
+    
+    if (selector) {
+        const button = document.querySelector(selector);
+        button?.click();
+    }
+})
