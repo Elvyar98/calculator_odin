@@ -6,19 +6,19 @@ let answer;
 const display = document.querySelector(".calculator__output");
 
 const add = function(a,b) {
-    return parseInt(a) + parseInt(b);
+    return parseFloat(a) + parseFloat(b);
 };
 
 const subtract = function(a,b) {
-    return parseInt(a) - parseInt(b);
+    return parseFloat(a) - parseFloat(b);
 };
 
 const multiply = function(a,b) {
-    return parseInt(a) * parseInt(b);
+    return parseFloat(a) * parseFloat(b);
 };
 
 const divide = function(a,b) {
-    return parseInt(a) / parseInt(b);
+    return parseFloat(a) / parseFloat(b);
 };
 
 function operate (a,b,c) {
@@ -47,7 +47,10 @@ buttons.forEach((button) => {
             !button.classList.contains("calculator__key--enter") &&
             !button.classList.contains("calculator__key--backspace"))){
 
-            if (firstNumber == null && operator == null){
+            if (firstNumber == null) {
+                firstNumber = button.textContent;
+                display.textContent = firstNumber;
+            } else if (firstNumber != null && operator == null){
                 firstNumber = (firstNumber ?? "") + button.textContent;
                 display.textContent = firstNumber;
             } else if (operator != null) {
@@ -99,6 +102,20 @@ buttons.forEach((button) => {
             firstNumber = null;
         }
     
+     }
+
+     if (button.classList.contains("calculator__key--decimal")) {
+        if(operator == null) {
+            if(!firstNumber?.includes(".")) {
+                firstNumber = (firstNumber ?? "0") + ".";
+                display.textContent = firstNumber;
+            }
+        } else {
+            if(!secondNumber?.includes(".")) {
+                secondNumber = (secondNumber ?? "0") + ".";
+                display.textContent = secondNumber;
+            }
+        }
      }
 
     });
