@@ -46,11 +46,14 @@ buttons.forEach((button) => {
             !button.classList.contains("calculator__key--clear") && 
             !button.classList.contains("calculator__key--enter") &&
             !button.classList.contains("calculator__key--backspace"))){
-                display.textContent = button.textContent;
 
-            if (firstNumber == null){
-                firstNumber = button.textContent;
-            } else secondNumber = button.textContent;
+            if (firstNumber == null && operator == null){
+                firstNumber = (firstNumber ?? "") + button.textContent;
+                display.textContent = firstNumber;
+            } else if (operator != null) {
+                secondNumber = (secondNumber ?? "") + button.textContent;
+                display.textContent = secondNumber;
+            }
      };
 
      if(button.classList.contains("calculator__key--operator")) {
